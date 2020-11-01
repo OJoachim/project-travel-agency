@@ -28,7 +28,14 @@ export const getFilteredTrips = ({trips, filters}) => {
   }
 
   // TODO - sort by cost descending (most expensive goes first)
-
+  output = output.sort((trip1, trip2) => {
+    console.log('Trip1.cost', trip1.cost);//$51,380.61
+    const costTrip1 = parseFloat(trip1.cost.replace('$', '').replace(',', ''));
+    console.log('cost of Trip1', (trip1.cost.replace('$', '').replace(',', '')));//cost: 51380,61
+    
+    const costTrip2 = parseFloat(trip2.cost.replace('$', '').replace(',', ''));
+    return costTrip2 - costTrip1;
+  });
   return output;
 };
 
